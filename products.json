@@ -1,0 +1,114 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Mouse",
+        "category": "Electronics",
+        "price": 799,
+        "image": "https://images.unsplash.com/photo-1527814050087-3793815479db"
+    },
+    {
+        "id": 2,
+        "name": "Mechanical Keyboard",
+        "category": "Electronics",
+        "price": 2499,
+        "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3"
+    },
+    {
+        "id": 3,
+        "name": "USB-C Fast Charger",
+        "category": "Accessories",
+        "price": 1299,
+        "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0"
+    },
+    {
+        "id": 4,
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "price": 1899,
+        "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1"
+    },
+    {
+        "id": 5,
+        "name": "Laptop Backpack",
+        "category": "Bags",
+        "price": 1599,
+        "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62"
+    },
+    {
+        "id": 6,
+        "name": "Stainless Steel Water Bottle",
+        "category": "Home & Kitchen",
+        "price": 699,
+        "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8"
+    },
+    {
+        "id": 7,
+        "name": "Running Shoes",
+        "category": "Footwear",
+        "price": 2999,
+        "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+    },
+    {
+        "id": 8,
+        "name": "Cotton T-Shirt",
+        "category": "Clothing",
+        "price": 599,
+        "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
+    },
+    {
+        "id": 9,
+        "name": "Smart Watch",
+        "category": "Wearables",
+        "price": 3499,
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+    },
+    {
+        "id": 10,
+        "name": "LED Desk Lamp",
+        "category": "Home & Kitchen",
+        "price": 999,
+        "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c"
+    },
+    {
+        "id": 11,
+        "name": "Noise Cancelling Headphones",
+        "category": "Electronics",
+        "price": 4999,
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e"
+    },
+    {
+        "id": 12,
+        "name": "Mobile Phone Stand",
+        "category": "Accessories",
+        "price": 399,
+        "image": "https://images.unsplash.com/photo-1609592424587-3c7e2d5e8a8e"
+    },
+    {
+        "id": 13,
+        "name": "Gaming Mouse Pad",
+        "category": "Gaming",
+        "price": 899,
+        "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7"
+    },
+    {
+        "id": 14,
+        "name": "Power Bank 20000mAh",
+        "category": "Electronics",
+        "price": 1799,
+        "image": "https://images.unsplash.com/photo-1609592424587-3c7e2d5e8a8e"
+    },
+    {
+        "id": 15,
+        "name": "Office Chair",
+        "category": "Furniture",
+        "price": 7499,
+        "image": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8"
+    },
+    {
+        "id": 16,
+        "name": "ddd",
+        "category": "grw",
+        "price": 485.0,
+        "image": "/static/uploads/93ce2c22f074436ba972167257434c70_Screenshot_2026_0404_073527.png"
+    }
+]
