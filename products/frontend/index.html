@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+
+        <div class="logo">
+            <h1>Product Store</h1>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="header-actions">
+            <button id="add-product-btn">+ Add Product</button>
+
+            <div class="action-menu">
+
+                <button id="actions-btn">Actions ▾</button>
+
+                <div class="action-dropdown" id="action-dropdown">
+
+                    <button id="update-product-btn">
+                        Update Product
+                    </button>
+
+                    <button id="patch-product-btn">
+                        Patch Product
+                    </button>
+
+                    <button id="delete-product-btn">
+                        Delete Product
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+    <!-- post -->
+    <div class="product-form" id="product-form">
+
+        <h2>Add New Product</h2>
+
+        <input type="text" id="product-name" placeholder="Product name">
+
+        <input type="text" id="product-category" placeholder="Category">
+
+        <input type="number" id="product-price" placeholder="Price">
+        <input type="file" id="product-image" accept="image/*">
+        <button id="save-product-btn">Add Product</button>
+
+    </div>
+
+    <main id="products-container">
+        <!-- Products will come here using JavaScript -->
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
