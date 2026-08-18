@@ -226,33 +226,61 @@ def add_product():
 
 
 # PUT DATA
-@app.route("/products/<int:product_id>", methods=["PUT"])
-def update_proudct(product_id):
+@app.route("/products", methods=["PUT"])
+def update_proudct():
     products = load_products()
-    data = request.get_json()
-    if not data:
-        return jsonify({"message": "product details cannot be empty"})
-    allowed_fields = {"name", "category", "price"}
-    for field in data:
-        if field not in allowed_fields:
-            return jsonify({"message": "Unexpected field", "fields": field})
-    if not all(field in data for field in allowed_fields):
-        return jsonify(
-            {"message": "Name, category, price all three details are required."}
+    id= request.form.get("id")
+    name = request.form.get("name")
+    category = request.form.get("category")
+    price = request.form.get("price")
+    image = request.files.get("image")
+
+    # Required fields
+    if not name or not category or not price:
+        return (
+            jsonify(
+                {"message": "name, category and price all three fields are required"}
+            ),
+            400,
         )
-    if not isinstance(data["name"], str) or data["name"].strip() == "":
-        return jsonify({"message": "Invalid Name! Enter valid name"})
 
-    if not isinstance(data["category"], str) or data["category"].strip() == "":
-        return jsonify({"message": "Invalid category! Enter valid category"})
+    # Name validation
+    if not isinstance(name, str) or name.strip() == "":
+        return jsonify({"message": "Invalid name! Name cannot be empty"}), 400
 
-    if not isinstance(data["price"], (int, float)) or data["price"] <= 0:
-        return jsonify({"message": "Invalid price! Enter valid price"})
+    # Category validation
+    if not isinstance(category, str) or category.strip() == "":
+        return jsonify({"message": "Invalid category! Category cannot be empty"}), 400
+
+    # Price validation
+    try:
+        price = float(price)
+    except ValueError:
+        return jsonify({"message": "Invalid price! Enter a valid number"}), 400
+
+    if price <= 0:
+        return (
+            jsonify(
+                {"message": "Invalid price! Price cannot be negative or less than zero"}
+            ),
+            400,
+        )
+
+    # Image validation
+    if not image or image.filename == "":
+        return jsonify({"message": "Product image is required"}), 400
+
+    # Save image
+    filename = secure_filename(image.filename)
+    unique_filename = f"{uuid.uuid4().hex}_{filename}"
+
+    image_path = os.path.join(upload_folder, unique_filename)
+    image.save(image_path)
     for product in products:
-        if product["id"] == product_id:
-            product["name"] = data["name"]
-            product["category"] = data["category"]
-            product["price"] = data["price"]
+        if product["id"] == id:
+            product["name"] = name
+            product["category"] = category
+            product["price"] = price
             save_products(products)
             return (
                 jsonify(
