@@ -3,8 +3,8 @@ const search_input = document.getElementById("search-input")
 const actions_btn = document.getElementById("actions-btn");
 const action_dropdown = document.getElementById("action-dropdown");
 const add_product_btn = document.getElementById("add-product-btn");
-const product_form = document.getElementById("product-form");
-const product_image = document.getElementById("product-image");
+const add_product_form = document.getElementById("add-product-form");
+const add_product_image = document.getElementById("add-product-image");
 
 let product_data = [];
 // DROPDOWN
@@ -22,7 +22,7 @@ search_input.addEventListener("input", () => {
 })
 //  add product form layout
 add_product_btn.addEventListener("click", () => {
-    product_form.classList.toggle("show")
+    add_product_form.classList.toggle("show")
 })
 // fetching product
 fetch("http://127.0.0.1:5000/products")
@@ -49,10 +49,10 @@ function display_products(products) {
     })
 };
 // post 
-const save_product_btn = document.getElementById("save-product-btn");
-const product_name = document.getElementById("product-name");
-const product_category = document.getElementById("product-category");
-const product_price = document.getElementById("product-price");
+const save_product_btn = document.getElementById("post-product-btn");
+const product_name = document.getElementById("add-product-name");
+const product_category = document.getElementById("add-product-category");
+const product_price = document.getElementById("add-product-price");
 save_product_btn.addEventListener("click", () => {
 
     const form_data = new FormData();
@@ -60,7 +60,7 @@ save_product_btn.addEventListener("click", () => {
     form_data.append("name", product_name.value);
     form_data.append("category", product_category.value);
     form_data.append("price", product_price.value);
-    form_data.append("image", product_image.files[0]);
+    form_data.append("image", add_product_image.files[0]);
 
     fetch("http://127.0.0.1:5000/products", {
         method: "POST",
@@ -74,4 +74,39 @@ save_product_btn.addEventListener("click", () => {
             console.log(error);
         });
 
+});
+
+const put_product_btn = document.getElementById("update-btn");
+
+const update_product_form = document.getElementById("update-product-form");
+const put = document.getElementById("put-product-btn");
+const update_product_name = document.getElementById("update-product-name");
+const update_product_category = document.getElementById("update-product-category");
+const update_product_image = document.getElementById("update-product-image");
+const update_product_price = document.getElementById("update-product-price");
+const update_product_id = document.getElementById("update-product-id");
+put_product_btn.addEventListener("click", () => {
+    update_product_form.classList.toggle("show")
+});
+put.addEventListener("click", () => {
+
+    const form_data = new FormData();
+
+    form_data.append("id", update_product_id.value);
+    form_data.append("name", update_product_name.value);
+    form_data.append("category", update_product_category.value);
+    form_data.append("price", update_product_price.value);
+    form_data.append("image", update_product_image.files[0]);
+    console.log(update_product_id.value, update_product_name.value, update_product_category.value, update_product_price.value, update_product_image.files[0]);
+        // fetch("http://127.0.0.1:5000/products", {
+        //     method: "PUT",
+        //     body: form_data
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
 });
