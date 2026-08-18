@@ -110,5 +110,26 @@
         "category": "grw",
         "price": 485.0,
         "image": "/static/uploads/93ce2c22f074436ba972167257434c70_Screenshot_2026_0404_073527.png"
+    },
+    {
+        "id": 17,
+        "name": "cdc",
+        "category": "v;elmv",
+        "price": 1.0,
+        "image": "/static/uploads/6bf077e4345d4f93ae8a799d15293282_Screenshot_2026-03-18_101135.png"
+    },
+    {
+        "id": 18,
+        "name": "cdc",
+        "category": "kklm",
+        "price": 455.0,
+        "image": "/static/uploads/14361144a9a9442e9c30e0ee5d7924ed_Screenshot_2026-06-25_170506.png"
+    },
+    {
+        "id": 19,
+        "name": "abcds",
+        "category": "xyz",
+        "price": 755.0,
+        "image": "/static/uploads/d687359241c14a0294727cb6dfd01c50_Screenshot_2026-06-17_183002.png"
     }
 ]
