@@ -31,7 +31,7 @@
 
                 <div class="action-dropdown" id="action-dropdown">
 
-                    <button id="update-product-btn">
+                    <button id="update-btn">
                         Update Product
                     </button>
 
@@ -50,20 +50,33 @@
 
     </header>
     <!-- post -->
-    <div class="product-form" id="product-form">
+    <div class="product-form" id="add-product-form">
 
         <h2>Add New Product</h2>
 
-        <input type="text" id="product-name" placeholder="Product name">
+        <input type="text" id="add-product-name" placeholder="Product name">
 
-        <input type="text" id="product-category" placeholder="Category">
+        <input type="text" id="add-product-category" placeholder="Category">
 
-        <input type="number" id="product-price" placeholder="Price">
-        <input type="file" id="product-image" accept="image/*">
-        <button id="save-product-btn">Add Product</button>
+        <input type="number" id="add-product-price" placeholder="Price">
+        <input type="file" id="add-product-image" accept="image/*">
+        <button id="post-product-btn">Add Product</button>
 
     </div>
+    <!-- put -->
+    <div class="product-form" id="update-product-form">
 
+        <h2>Update Product</h2>
+        <input type="text" id="update-product-id" placeholder="Product ID">
+        <input type="text" id="update-product-name" placeholder="Product name">
+
+        <input type="text" id="update-product-category" placeholder="Category">
+
+        <input type="number" id="update-product-price" placeholder="Price">
+        <input type="file" id="update-product-image" accept="image/*">
+        <button id="put-product-btn">Update Product</button>
+
+    </div>
     <main id="products-container">
         <!-- Products will come here using JavaScript -->
     </main>
