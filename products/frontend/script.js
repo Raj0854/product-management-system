@@ -80,14 +80,21 @@ const put_product_btn = document.getElementById("update-btn");
 
 const update_product_form = document.getElementById("update-product-form");
 const put = document.getElementById("put-product-btn");
+
 const update_product_name = document.getElementById("update-product-name");
 const update_product_category = document.getElementById("update-product-category");
 const update_product_image = document.getElementById("update-product-image");
 const update_product_price = document.getElementById("update-product-price");
 const update_product_id = document.getElementById("update-product-id");
+
+
+// OPEN UPDATE FORM
 put_product_btn.addEventListener("click", () => {
-    update_product_form.classList.toggle("show")
+    update_product_form.classList.toggle("show");
 });
+
+
+// PUT PRODUCT
 put.addEventListener("click", () => {
 
     const form_data = new FormData();
@@ -96,17 +103,104 @@ put.addEventListener("click", () => {
     form_data.append("name", update_product_name.value);
     form_data.append("category", update_product_category.value);
     form_data.append("price", update_product_price.value);
-    form_data.append("image", update_product_image.files[0]);
-    console.log(update_product_id.value, update_product_name.value, update_product_category.value, update_product_price.value, update_product_image.files[0]);
-        // fetch("http://127.0.0.1:5000/products", {
-        //     method: "PUT",
-        //     body: form_data
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data);
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     });
+
+    // Add image only if user selected one
+    if (update_product_image.files[0]) {
+        form_data.append("image", update_product_image.files[0]);
+    }
+
+    fetch("http://127.0.0.1:5000/products", {
+        method: "PUT",
+        body: form_data
+    })
+        .then(response => response.json())
+        .then(data => {
+
+            console.log(data);
+
+            if (data.product) {
+
+                product_data = product_data.map(product =>
+                    product.id === data.product.id
+                        ? data.product
+                        : product
+                );
+
+                display_products(product_data);
+            }
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+});
+// PATCH PRODUCT show form
+const patch_product_btn = document.getElementById("patch-product-btn");
+const patch_product_form = document.getElementById("patch-product-form");
+patch_product_btn.addEventListener("click", () => {
+    patch_product_form.classList.toggle("show");
+});
+// PATCH PRODUCT
+const patch_product_id = document.getElementById("patch-product-id");
+const patch_product_field = document.getElementById("patch-product-field");
+const patch_product_value = document.getElementById("patch-product-value");
+const patch_btn = document.getElementById("patch-btn");
+
+patch_btn.addEventListener("click", () => {
+    const id = patch_product_id.value;
+    const field = patch_product_field.value;
+    const value = patch_product_value.value;
+    const patch_data = {};
+    if (field === "price") {
+        patch_data[field] = Number(value);
+    }
+    else {
+        patch_data[field] = value;
+    }
+    fetch(`http://127.0.0.1:5000/products/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(patch_data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.product) {
+                product_data = product_data.map(product => product.id === data.product.id ? data.product : product);
+                display_products(product_data)
+            }
+        })
+        .catch(error => {
+            console.log(error);
+
+        });
+});
+
+// delete form
+const delete_product_btn = document.getElementById("delete-product-btn");
+const delete_product_form = document.getElementById("delete-product-form");
+delete_product_btn.addEventListener("click", () => {
+    delete_product_form.classList.add("show");
+});
+const product_delete_id = document.getElementById("delete-product-id");
+const delete_btn = document.getElementById("delete-btn");
+delete_btn.addEventListener("click", () => {
+    const id = product_delete_id.value;
+    fetch(`http://127.0.0.1:5000/products/${id}`, {
+        method:"DELETE"
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if (data.product) {
+                product_data = product_data.filter(product => product.id !== data.product.id);
+                display_products(product_data)
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
 });
