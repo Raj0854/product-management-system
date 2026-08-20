@@ -227,13 +227,20 @@ def add_product():
 
 # PUT DATA
 @app.route("/products", methods=["PUT"])
-def update_proudct():
+def update_product():
     products = load_products()
-    id= request.form.get("id")
+
+    id = request.form.get("id")
     name = request.form.get("name")
     category = request.form.get("category")
     price = request.form.get("price")
     image = request.files.get("image")
+
+    # ID validation
+    try:
+        id = int(id)
+    except (TypeError, ValueError):
+        return jsonify({"message": "Invalid product ID"}), 400
 
     # Required fields
     if not name or not category or not price:
@@ -266,29 +273,38 @@ def update_proudct():
             400,
         )
 
-    # Image validation
-    if not image or image.filename == "":
-        return jsonify({"message": "Product image is required"}), 400
-
-    # Save image
-    filename = secure_filename(image.filename)
-    unique_filename = f"{uuid.uuid4().hex}_{filename}"
-
-    image_path = os.path.join(upload_folder, unique_filename)
-    image.save(image_path)
+    # Find product first
     for product in products:
+
         if product["id"] == id:
-            product["name"] = name
-            product["category"] = category
+
+            # Update text fields
+            product["name"] = name.strip()
+            product["category"] = category.strip()
             product["price"] = price
+
+            # Update image only if a new image was uploaded
+            if image and image.filename != "":
+
+                filename = secure_filename(image.filename)
+                unique_filename = f"{uuid.uuid4().hex}_{filename}"
+
+                image_path = os.path.join(upload_folder, unique_filename)
+
+                image.save(image_path)
+
+                product["image"] = f"/static/uploads/{unique_filename}"
+
             save_products(products)
+
             return (
                 jsonify(
-                    {"message": "product updated succesfully", "products": product}
+                    {"message": "product updated successfully", "product": product}
                 ),
                 200,
             )
-    return jsonify({"message": "product not found"}), 404
+
+    return jsonify({"message": "Product not found"}), 404
 
 
 # patch data
