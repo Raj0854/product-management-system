@@ -1,9 +1,9 @@
 [
     {
         "id": 1,
-        "name": "Wireless Mouse",
-        "category": "Electronics",
-        "price": 799,
+        "name": "wired",
+        "category": "electronics",
+        "price": 699.0,
         "image": "https://images.unsplash.com/photo-1527814050087-3793815479db"
     },
     {
@@ -15,9 +15,9 @@
     },
     {
         "id": 3,
-        "name": "USB-C Fast Charger",
-        "category": "Accessories",
-        "price": 1299,
+        "name": "charger",
+        "category": "accessories",
+        "price": 1399.0,
         "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0"
     },
     {
@@ -31,7 +31,7 @@
         "id": 5,
         "name": "Laptop Backpack",
         "category": "Bags",
-        "price": 1599,
+        "price": 1799,
         "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62"
     },
     {
@@ -110,13 +110,6 @@
         "category": "grw",
         "price": 485.0,
         "image": "/static/uploads/93ce2c22f074436ba972167257434c70_Screenshot_2026_0404_073527.png"
-    },
-    {
-        "id": 17,
-        "name": "cdc",
-        "category": "v;elmv",
-        "price": 1.0,
-        "image": "/static/uploads/6bf077e4345d4f93ae8a799d15293282_Screenshot_2026-03-18_101135.png"
     },
     {
         "id": 18,
