@@ -193,3 +193,10 @@ h1 {
 .product-form.show {
     display: block;
 }
+.product-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
